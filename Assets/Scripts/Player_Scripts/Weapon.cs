@@ -15,34 +15,48 @@ public class Weapon : MonoBehaviour
     public EnemyBehaviour enemyBehaviour;
 
 
-    SpriteRenderer spriteRenderer;
-    bool flip = false;
+    SpriteRenderer WeaponspriteRenderer;
+    SpriteRenderer playerSprite;
+    public GameObject player;
+    bool Weaponflip = false;
+
+    //bool playerFlip = false;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        spriteRenderer = weapon.GetComponent<SpriteRenderer>();
-          
-      
+        WeaponspriteRenderer = weapon.GetComponent<SpriteRenderer>();
+       // playerSprite = player.GetComponent<SpriteRenderer>();
+       
+
+       
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        spriteRenderer.flipY = flip;
+        WeaponspriteRenderer.flipY = Weaponflip;
+       // playerSprite.flipX = playerFlip;
 
-        flip = false;
+
+        
+
+
         if (Input.mousePosition.x < 360)
         {
             
-            flip = true;
+            Weaponflip = true;
+            //playerFlip = true;
             Shoot(OutHoleRight, bullet);
         }
         else
         {
-            flip = false;
+            Weaponflip = false;
+           // playerFlip = false;
             Shoot(OutHoleLeft, bullet);
         }
        
@@ -61,7 +75,7 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetMouseButton(0) && timer > fireRate)
         {
-            Instantiate(bullet, OutHole.transform.position, transform.rotation);
+            Instantiate(bullet, OutHole.transform.position, transform.rotation, gameObject.transform);
             timer = 0;
         }
 
