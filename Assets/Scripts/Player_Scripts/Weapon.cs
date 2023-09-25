@@ -75,7 +75,7 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetMouseButton(0) && timer > fireRate)
         {
-            Instantiate(bullet, OutHole.transform.position, transform.rotation, gameObject.transform);
+            Instantiate(bullet, OutHole.transform.position, transform.rotation);
             timer = 0;
         }
 
