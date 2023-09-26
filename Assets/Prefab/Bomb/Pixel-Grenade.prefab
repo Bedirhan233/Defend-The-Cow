@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1478068357
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 530b907458f419240b90d8c6e3855e5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,13 +101,8 @@ MonoBehaviour:
   delay: 3
   force: 3
   radius: 4
-  speed: 30
+  speed: 10
   deacaleretion: 1
-  head: {fileID: 0}
-  arm: {fileID: 0}
-  body: {fileID: 0}
-  leg: {fileID: 0}
-  human: {fileID: 0}
   explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
 --- !u!50 &7179423548747098794
 Rigidbody2D:

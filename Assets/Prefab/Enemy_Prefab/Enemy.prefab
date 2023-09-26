@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 6432812789864890613}
   - component: {fileID: 6927723446273906407}
   - component: {fileID: 8896608903147968026}
+  - component: {fileID: -1610391104210878495}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Finish
@@ -213,7 +214,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1478068357
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300008, guid: 2164a1816f29acf45ad76327ffa671c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -329,6 +330,22 @@ CircleCollider2D:
   m_Offset: {x: -0.009680152, y: 0.5833496}
   serializedVersion: 2
   m_Radius: 0.92
+--- !u!114 &-1610391104210878495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293387036058523467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52458eada621b0f4d9ab1f91d2ae117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 4541006765115629556, guid: e43ffcc6b1b6ee544ac39178a7b32aee, type: 3}
+  arm: {fileID: 2868029601762588371, guid: db104c5103d0a6945855f6f719d7ad3f, type: 3}
+  body: {fileID: 4652433578095780698, guid: 65f51d3095be9764fa332a5e708ecb7d, type: 3}
+  leg: {fileID: 7311223395916442896, guid: 556f6d6135cf9f04fa9b666fc5d3d067, type: 3}
 --- !u!1 &5217823582671521367
 GameObject:
   m_ObjectHideFlags: 0

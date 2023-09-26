@@ -11,12 +11,9 @@ public class Grenade : MonoBehaviour
     public float speed = 20;
     public float deacaleretion;
 
-    public GameObject head;
-    public GameObject arm;
-    public GameObject body;
-    public GameObject leg;
+    
 
-    public DestroyedHuman human;
+    
 
     public GameObject explosionEffect;
 
@@ -29,7 +26,6 @@ public class Grenade : MonoBehaviour
         timer = delay;
         hasExploded = false;
 
-        human = GetComponent<DestroyedHuman>(); 
 
        
     }
@@ -89,13 +85,14 @@ public class Grenade : MonoBehaviour
                 direction.Normalize();
                 rb.AddForce(direction * force);
                 
-                Destroy(nearbyObjects.gameObject, 0.3f);
+                Destroy(nearbyObjects.gameObject, 0.1f);
             }
 
             DestroyedHuman destroyed = nearbyObjects.GetComponent<DestroyedHuman>();
             if(destroyed != null )
             {
-                
+                destroyed.ExplodeBodies();
+               
             }
 
             
