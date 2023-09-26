@@ -149,9 +149,9 @@ GameObject:
   - component: {fileID: 6432812789864890613}
   - component: {fileID: 6927723446273906407}
   - component: {fileID: 8896608903147968026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,9 +264,9 @@ MonoBehaviour:
   animator: {fileID: 141848154274025743}
   speed: 2
   shooting: 0
-  MoveRange: 8
+  MoveRange: 22.77
   fireRate: 0.1
-  startToIdle: 30
+  startToIdle: 20
 --- !u!50 &6927723446273906407
 Rigidbody2D:
   serializedVersion: 4

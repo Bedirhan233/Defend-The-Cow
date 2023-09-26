@@ -18,7 +18,10 @@ public class CharacterFlip : MonoBehaviour
     {
         WeaponspriteRenderer.flipX = playerFlip;
 
-        if (Input.mousePosition.x < 360)
+        Debug.Log(Input.mousePosition.x);
+        
+
+        if (Input.mousePosition.x < 950)
         {
 
             

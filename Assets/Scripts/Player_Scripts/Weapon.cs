@@ -20,46 +20,38 @@ public class Weapon : MonoBehaviour
     public GameObject player;
     bool Weaponflip = false;
 
-    //bool playerFlip = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
         WeaponspriteRenderer = weapon.GetComponent<SpriteRenderer>();
-       // playerSprite = player.GetComponent<SpriteRenderer>();
-       
-
-       
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        Flip();
+
         
+
+    }
+
+    private void Flip()
+    {
         WeaponspriteRenderer.flipY = Weaponflip;
-       // playerSprite.flipX = playerFlip;
 
-
-        
-
-
-        if (Input.mousePosition.x < 360)
+        if (Input.mousePosition.x < 950)
         {
-            
+
             Weaponflip = true;
-            //playerFlip = true;
             Shoot(OutHoleRight, bullet);
         }
         else
         {
             Weaponflip = false;
-           // playerFlip = false;
             Shoot(OutHoleLeft, bullet);
         }
-       
     }
 
     private void Shoot(GameObject OutHole, GameObject bullet)

@@ -99,11 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 3
-  explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
   force: 3
   radius: 4
-  speed: 4
+  speed: 30
   deacaleretion: 1
+  head: {fileID: 0}
+  arm: {fileID: 0}
+  body: {fileID: 0}
+  leg: {fileID: 0}
+  human: {fileID: 0}
+  explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
 --- !u!50 &7179423548747098794
 Rigidbody2D:
   serializedVersion: 4

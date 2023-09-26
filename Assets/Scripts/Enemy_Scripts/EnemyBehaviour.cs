@@ -11,6 +11,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     
 
+    
+
     public Animator animator;
 
     Rigidbody2D rb2;
@@ -21,6 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     public float MoveRange = 5;
     public float fireRate = 5;
     float timer;
+
+    bool isIdle = false;
 
     public float startToIdle = 30;
 
@@ -38,22 +42,63 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToPlayer();
-        
-        if(shooting)
+        MoveToThePlayer();
+
+        ShootingAnimation();
+
+    }
+
+    void MoveToThePlayer()
+    {
+
+        if (direction.sqrMagnitude < MoveRange)
         {
-        animator.SetBool("ShootingAnimation", true);
-            
+
+            animator.SetBool("Walk", true);
+
+            // turn thhead to the player
+
+            transform.up = target.transform.position;
+
+            //calculate distance to the player
+
+            direction = target.position - transform.position;
+            Debug.Log(direction.sqrMagnitude);
+
+            if (direction.sqrMagnitude < startToIdle)
+            {
+
+                isIdle = true;
+                if (isIdle)
+                {
+                    rb2.velocity *= 0;
+                    isIdle = false;
+                }
+            }
+            if (direction.sqrMagnitude > startToIdle)
+            {
+                direction.Normalize();
+
+                rb2.velocity = speed * direction;
+
+            }
+        }
+    }
+
+    private void ShootingAnimation()
+    {
+        if (shooting)
+        {
+            animator.SetBool("ShootingAnimation", true);
+
 
         }
         else
         {
             animator.SetBool("ShootingAnimation", false);
             shooting = false;
-            
+
         }
-
-
     }
 
     public void Shoot()
@@ -74,41 +119,25 @@ public class EnemyBehaviour : MonoBehaviour
         
     }
 
-    void MoveToPlayer()
+    
+
+    private void OnDrawGizmosSelected()
     {
-        
-
-        if (direction.sqrMagnitude < MoveRange)
-        {
-
-            animator.SetBool("Walk", true);
-
-            // turn thhead to the player
-
-            transform.up = target.transform.position;
-
-            //calculate distance to the player
-
-            direction = target.position - transform.position;
-
-            if(direction.sqrMagnitude < startToIdle) 
-            {
-                rb2.velocity *= 0;
-            }
-            else
-            {
-                direction.Normalize();
-
-                rb2.velocity = speed * direction;
-            }
-            
-        }
-
-        
-        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, MoveRange);
 
         
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Bullet")
+        {
+            
+        }
+    }
+
+
+
+
 }
