@@ -18,7 +18,7 @@ public class Enemy_Range : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.parent.name);
+        
 
         transform.localScale = new Vector2(ShootRange, ShootRange);
         if (isShooting )

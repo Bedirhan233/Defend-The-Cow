@@ -168,6 +168,7 @@ MonoBehaviour:
   weapon: {fileID: 3788974599932999757}
   fireRate: 0.1
   enemyBehaviour: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &8707829173733992974
 GameObject:
   m_ObjectHideFlags: 0

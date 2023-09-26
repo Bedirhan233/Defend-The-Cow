@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5021784, y: 1.0077257, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.30948, y: 0.30948, z: 0.30948}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1478068357
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 530b907458f419240b90d8c6e3855e5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,8 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 3
   explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
-  force: 200
-  radius: 8.8
+  force: 3
+  radius: 4
+  speed: 4
+  deacaleretion: 1
 --- !u!50 &7179423548747098794
 Rigidbody2D:
   serializedVersion: 4
