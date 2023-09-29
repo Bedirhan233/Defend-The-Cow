@@ -16,10 +16,10 @@ public class CharacterFlip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.mousePosition);
+        
         WeaponspriteRenderer.flipX = playerFlip;
 
-        Debug.Log(Input.mousePosition.x);
+        
         
 
         if (Input.mousePosition.x < 950)

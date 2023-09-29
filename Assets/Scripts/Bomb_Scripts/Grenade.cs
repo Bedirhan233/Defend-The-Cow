@@ -11,8 +11,8 @@ public class Grenade : MonoBehaviour
     public float speed = 20;
     public float deacaleretion;
 
-    
 
+    public Vector3 target;
     
 
     public GameObject explosionEffect;
@@ -57,8 +57,10 @@ public class Grenade : MonoBehaviour
 
         // throw it to the mouse position
 
+        Debug.Log("before division " + target);
 
-
+        target = target / 100;
+        Debug.Log("after division " + target);
         transform.position += transform.up * speed * deacaleretion * Time.deltaTime;
 
     }

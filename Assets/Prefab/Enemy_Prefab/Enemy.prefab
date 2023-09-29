@@ -267,7 +267,7 @@ MonoBehaviour:
   shooting: 0
   MoveRange: 22.77
   fireRate: 0.1
-  startToIdle: 20
+  startToIdle: 10
 --- !u!50 &6927723446273906407
 Rigidbody2D:
   serializedVersion: 4
@@ -343,9 +343,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 4541006765115629556, guid: e43ffcc6b1b6ee544ac39178a7b32aee, type: 3}
-  arm: {fileID: 2868029601762588371, guid: db104c5103d0a6945855f6f719d7ad3f, type: 3}
+  rightArm: {fileID: 1410357040557405821, guid: a7d04d60b553d1a40b474201e28c77bf, type: 3}
+  leftArm: {fileID: 2868029601762588371, guid: db104c5103d0a6945855f6f719d7ad3f, type: 3}
   body: {fileID: 4652433578095780698, guid: 65f51d3095be9764fa332a5e708ecb7d, type: 3}
-  leg: {fileID: 7311223395916442896, guid: 556f6d6135cf9f04fa9b666fc5d3d067, type: 3}
+  body2: {fileID: 9079815449363576297, guid: 96e048d561bf05448af78dc3b288dce1, type: 3}
+  leftLeg: {fileID: 865255438955458353, guid: 3c77dfde401c96b459e1808b08cd173b, type: 3}
+  rightLeg: {fileID: 1881452227567403174, guid: 96b3911c3575bd54f8f7df2e043a2be2, type: 3}
 --- !u!1 &5217823582671521367
 GameObject:
   m_ObjectHideFlags: 0

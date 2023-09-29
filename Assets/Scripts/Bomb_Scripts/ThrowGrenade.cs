@@ -6,7 +6,7 @@ using UnityEngine;
 public class ThrowGrenade : MonoBehaviour
 {
 
-    public GameObject greande;
+    public GameObject grenade;
     public GameObject grenadeOut;  
 
     public float speed = 5;
@@ -30,9 +30,12 @@ public class ThrowGrenade : MonoBehaviour
 
     void Throw()
     {
-        Instantiate(greande, grenadeOut.transform.position, grenadeOut.transform.rotation);
+        var newGranade = Instantiate(grenade, grenadeOut.transform.position, grenadeOut.transform.rotation);
+
         Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint(grenadeOut.transform.position);
         grenadeOut.transform.up = direction;
+
+        newGranade.GetComponent<Grenade>().target = gameObject.transform.position;
 
     }
    

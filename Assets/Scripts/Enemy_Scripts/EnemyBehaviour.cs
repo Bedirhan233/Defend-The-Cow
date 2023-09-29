@@ -9,6 +9,8 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject bullet;
     public GameObject shotOutHole;
 
+    public GameObject blood;
+
     
 
     
@@ -63,7 +65,7 @@ public class EnemyBehaviour : MonoBehaviour
             //calculate distance to the player
 
             direction = target.position - transform.position;
-            Debug.Log(direction.sqrMagnitude);
+            
 
             if (direction.sqrMagnitude < startToIdle)
             {
@@ -133,7 +135,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(other.gameObject.tag == "Bullet")
         {
-            
+            Instantiate(blood, transform.position, transform.rotation); 
         }
     }
 

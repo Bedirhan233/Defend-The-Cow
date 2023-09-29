@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 124862133845153157}
   - component: {fileID: 1301266647470517090}
-  - component: {fileID: 4699814570000131519}
   - component: {fileID: 7179423548747098794}
+  - component: {fileID: 1349967121087950815}
   m_Layer: 0
   m_Name: Pixel-Grenade
   m_TagString: Untagged
@@ -86,24 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4699814570000131519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7264712727678566556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c5846c8d510c446bd3759d78eb3ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 3
-  force: 3
-  radius: 4
-  speed: 10
-  deacaleretion: 1
-  explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
 --- !u!50 &7179423548747098794
 Rigidbody2D:
   serializedVersion: 4
@@ -131,3 +113,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1349967121087950815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264712727678566556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35c03b4d8b638941911395e0b5ae209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 3
+  force: 5
+  radius: 4
+  speed: 20
+  deacaleretion: 1
+  target: {x: 0, y: 0}
+  explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}

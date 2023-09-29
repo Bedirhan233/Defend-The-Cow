@@ -28,7 +28,7 @@ public class forceExplosion : MonoBehaviour
     {
 
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 3);
         
         
     }
