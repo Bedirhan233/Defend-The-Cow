@@ -1,6 +1,7 @@
 
 
 using Unity.Burst.Intrinsics;
+using UnityEditor;
 using UnityEngine;
 
 public class Grenade : MonoBehaviour
@@ -12,7 +13,11 @@ public class Grenade : MonoBehaviour
     public float deacaleretion;
 
 
-    public Vector3 target;
+    public Vector3 mousePos;
+    Vector3 velocity;
+    Vector3 mouseForc;
+    
+
     
 
     public GameObject explosionEffect;
@@ -20,13 +25,19 @@ public class Grenade : MonoBehaviour
     bool hasExploded;
     float timer;
 
+    public Vector3 player;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = delay;
         hasExploded = false;
 
+        GameObject player = FindObjectOfType<MoveThePlayer>().gameObject;
+        
 
+
+        Debug.Log(player);
        
     }
 
@@ -41,11 +52,19 @@ public class Grenade : MonoBehaviour
             Explode();
             hasExploded = true;
         }
-
+        
     }
 
     private void MovingGrenade()
     {
+
+
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        mouseForc = player - mousePos;
+
+
 
 
         deacaleretion = deacaleretion - 0.01f;
@@ -57,11 +76,26 @@ public class Grenade : MonoBehaviour
 
         // throw it to the mouse position
 
-        Debug.Log("before division " + target);
 
-        target = target / 100;
-        Debug.Log("after division " + target);
+        //if(mouseForc.sqrMagnitude > 10)
+        //{
+
+        //    mouseForc.Normalize();
+        //    mouseForc *= 10;
+        //}
+
+        Debug.Log(mouseForc.sqrMagnitude);
+        speed = speed + mouseForc.magnitude / 10;
+
+        //velocity = 
+
+        
         transform.position += transform.up * speed * deacaleretion * Time.deltaTime;
+
+        
+
+
+
 
     }
 

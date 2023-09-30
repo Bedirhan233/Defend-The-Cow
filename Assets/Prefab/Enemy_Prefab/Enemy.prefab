@@ -262,6 +262,7 @@ MonoBehaviour:
   target: {fileID: 0}
   bullet: {fileID: 4840937182946316935, guid: a45037d0a43747e499813314ee7f3fe4, type: 3}
   shotOutHole: {fileID: 5217823582671521367}
+  blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
   animator: {fileID: 141848154274025743}
   speed: 2
   shooting: 0
@@ -349,6 +350,10 @@ MonoBehaviour:
   body2: {fileID: 9079815449363576297, guid: 96e048d561bf05448af78dc3b288dce1, type: 3}
   leftLeg: {fileID: 865255438955458353, guid: 3c77dfde401c96b459e1808b08cd173b, type: 3}
   rightLeg: {fileID: 1881452227567403174, guid: 96b3911c3575bd54f8f7df2e043a2be2, type: 3}
+  blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
+  blood2: {fileID: 2172401070474474615, guid: b6f09d6577d5d7f46a3de4e388e011b3, type: 3}
+  blood3: {fileID: 6970210386457657890, guid: 5e0b4ce65dce19f4281bb07ce10d4d04, type: 3}
+  blood4: {fileID: 0}
 --- !u!1 &5217823582671521367
 GameObject:
   m_ObjectHideFlags: 0

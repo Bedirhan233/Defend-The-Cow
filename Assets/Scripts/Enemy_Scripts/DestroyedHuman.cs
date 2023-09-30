@@ -12,6 +12,11 @@ public class DestroyedHuman : MonoBehaviour
     public GameObject body2;
     public GameObject leftLeg;
     public GameObject rightLeg;
+
+    public GameObject blood;
+    public GameObject blood2;   
+    public GameObject blood3;   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +37,9 @@ public class DestroyedHuman : MonoBehaviour
         Instantiate(body, transform.position, transform.rotation);
         Instantiate(rightLeg, transform.position, transform.rotation);
         Instantiate(leftLeg, transform.position, transform.rotation);
+
+        Instantiate(blood, transform.position, transform.rotation);
+        Instantiate(blood2, transform.position, transform.rotation);
+        Instantiate(blood3, transform.position, transform.rotation);
     }
 }

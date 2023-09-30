@@ -7,8 +7,9 @@ public class ThrowGrenade : MonoBehaviour
 {
 
     public GameObject grenade;
-    public GameObject grenadeOut;  
+    public GameObject grenadeOut;
 
+    Vector2 mouse;
     public float speed = 5;
 
     public float throwForce = 5;
@@ -21,6 +22,10 @@ public class ThrowGrenade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+        
+      
         if(Input.GetMouseButtonDown(1)) 
         {
 
@@ -35,7 +40,9 @@ public class ThrowGrenade : MonoBehaviour
         Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint(grenadeOut.transform.position);
         grenadeOut.transform.up = direction;
 
-        newGranade.GetComponent<Grenade>().target = gameObject.transform.position;
+
+
+        newGranade.GetComponent<Grenade>().player = gameObject.transform.position;
 
     }
    
