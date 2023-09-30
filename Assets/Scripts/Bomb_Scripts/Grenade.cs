@@ -16,6 +16,8 @@ public class Grenade : MonoBehaviour
     public Vector3 mousePos;
     Vector3 velocity;
     Vector3 mouseForc;
+
+    public int throwForce = 20;
     
 
     
@@ -85,7 +87,7 @@ public class Grenade : MonoBehaviour
         //}
 
         Debug.Log(mouseForc.sqrMagnitude);
-        speed = speed + mouseForc.magnitude / 10;
+        speed = speed + mouseForc.magnitude / throwForce;
 
         //velocity = 
 
