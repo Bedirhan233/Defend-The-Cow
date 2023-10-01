@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: -1610391104210878495}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Finish
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,6 @@ MonoBehaviour:
   blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
   blood2: {fileID: 2172401070474474615, guid: b6f09d6577d5d7f46a3de4e388e011b3, type: 3}
   blood3: {fileID: 6970210386457657890, guid: 5e0b4ce65dce19f4281bb07ce10d4d04, type: 3}
-  blood4: {fileID: 0}
 --- !u!1 &5217823582671521367
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    public float delay = 3;
-    public float force = 5;
-    public float radius = 4;
-    public float speed = 20;
+    public float bombCountDown = 3;
+    public float explosionStrength = 5;
+    public float explosionSize = 4;
+    public float grenadeSpeed = 20;
     public float deacaleretion;
 
 
@@ -32,14 +32,13 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = delay;
+        timer = bombCountDown;
         hasExploded = false;
 
         GameObject player = FindObjectOfType<MoveThePlayer>().gameObject;
         
 
 
-        Debug.Log(player);
        
     }
 
@@ -76,23 +75,15 @@ public class Grenade : MonoBehaviour
             deacaleretion = 0;
         }
 
-        // throw it to the mouse position
 
-
-        //if(mouseForc.sqrMagnitude > 10)
-        //{
-
-        //    mouseForc.Normalize();
-        //    mouseForc *= 10;
-        //}
 
         Debug.Log(mouseForc.sqrMagnitude);
-        speed = speed + mouseForc.magnitude / throwForce;
+        grenadeSpeed = grenadeSpeed + mouseForc.magnitude / throwForce;
 
-        //velocity = 
+
 
         
-        transform.position += transform.up * speed * deacaleretion * Time.deltaTime;
+        transform.position += transform.up * grenadeSpeed * deacaleretion * Time.deltaTime;
 
         
 
@@ -104,7 +95,7 @@ public class Grenade : MonoBehaviour
     void Explode()
     {
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);    
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionSize);    
         GameObject explosionEffectPreFab = Instantiate(explosionEffect, transform.position, transform.rotation);
         
         {
@@ -121,7 +112,7 @@ public class Grenade : MonoBehaviour
             {
                 Vector2 direction = nearbyObjects.transform.position - transform.position;
                 direction.Normalize();
-                rb.AddForce(direction * force);
+                rb.AddForce(direction * explosionStrength);
                 
                 Destroy(nearbyObjects.gameObject, 0.1f);
             }
@@ -143,6 +134,6 @@ public class Grenade : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, explosionSize);
     }
 }

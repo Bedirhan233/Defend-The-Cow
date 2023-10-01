@@ -18,4 +18,17 @@ public class Bullet : MonoBehaviour
         transform.position += transform.up * speed * Time.deltaTime;
         Destroy(gameObject, 1);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Default")
+        {
+            Destroy(gameObject);    
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

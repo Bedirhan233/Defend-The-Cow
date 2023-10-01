@@ -125,10 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35c03b4d8b638941911395e0b5ae209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  force: 5
-  radius: 4
-  speed: 20
+  bombCountDown: 3
+  explosionStrength: 5
+  explosionSize: 4
+  grenadeSpeed: 5
   deacaleretion: 1
-  target: {x: 0, y: 0}
+  mousePos: {x: 0, y: 0, z: 0}
+  throwForce: 20
   explosionEffect: {fileID: 8175641109702709529, guid: 28cd0e6ee4d8e9047adeb4fdd2b3b0b7, type: 3}
+  player: {x: 0, y: 0, z: 0}

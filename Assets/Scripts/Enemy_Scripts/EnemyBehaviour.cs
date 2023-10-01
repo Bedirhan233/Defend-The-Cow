@@ -65,25 +65,29 @@ public class EnemyBehaviour : MonoBehaviour
             //calculate distance to the player
 
             direction = target.position - transform.position;
-            
 
-            if (direction.sqrMagnitude < startToIdle)
-            {
+            direction.Normalize();
 
-                isIdle = true;
-                if (isIdle)
-                {
-                    rb2.velocity *= 0;
-                    isIdle = false;
-                }
-            }
-            if (direction.sqrMagnitude > startToIdle)
-            {
-                direction.Normalize();
+            rb2.velocity = speed * direction;
 
-                rb2.velocity = speed * direction;
+            //if (direction.sqrMagnitude > startToIdle)
+            //{
+            //    direction.Normalize();
 
-            }
+            //    rb2.velocity = speed * direction;
+
+            //}
+
+            //if (direction.sqrMagnitude < startToIdle)
+            //{
+
+            //    isIdle = true;
+            //    if (isIdle)
+            //    {
+            //        rb2.velocity *= 0;
+            //        isIdle = false;
+            //    }
+            //}
         }
     }
 
