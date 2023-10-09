@@ -7,6 +7,10 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject enemy;
     public GameObject spawn1;
 
+    public GameObject soldier;
+
+    Vector2 mousePos;
+
     public int MaxEnemySpawnFromCar = 2;
     int EnemySpawnFromCar;
     // Start is called before the first frame update
@@ -18,6 +22,14 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.GetMouseButtonDown(1)) 
+        {
+        Instantiate(soldier, mousePos, transform.rotation); 
+        
+        }
+
         
     }
 
