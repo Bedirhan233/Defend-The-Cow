@@ -20,17 +20,29 @@ public class Weapon : MonoBehaviour
     public GameObject player;
     bool Weaponflip = false;
 
+    public int totalAmmo = 20;
+    int currentAmmo;
+
+    bool weaponIsReloaded;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         WeaponspriteRenderer = weapon.GetComponent<SpriteRenderer>();
+        currentAmmo = totalAmmo;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentAmmo > 0)
+        {
+            weaponIsReloaded = true;
+        }
+        else
+            weaponIsReloaded = false;    
         Flip();
 
         
@@ -45,12 +57,18 @@ public class Weapon : MonoBehaviour
         {
 
             Weaponflip = true;
+            
             Shoot(OutHoleRight, bullet);
+            
         }
         else
         {
             Weaponflip = false;
-            Shoot(OutHoleLeft, bullet);
+
+            
+                Shoot(OutHoleLeft, bullet);
+            
+            
         }
     }
 
@@ -65,8 +83,10 @@ public class Weapon : MonoBehaviour
 
      
 
-        if (Input.GetMouseButton(0) && timer > fireRate)
+        if ((Input.GetMouseButton(0) && timer > fireRate) && weaponIsReloaded)
         {
+            currentAmmo--;
+            Debug.Log(currentAmmo);
             Instantiate(bullet, OutHole.transform.position, transform.rotation);
             timer = 0;
         }

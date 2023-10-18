@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  range: 23.3
   target: {fileID: 5982217176529491538, guid: d8ea2bc4f54bf9a42b93a6cfbd1bf9ed, type: 3}
-  weapon: {fileID: 0}

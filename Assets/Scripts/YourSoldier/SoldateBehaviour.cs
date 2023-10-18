@@ -8,6 +8,8 @@ public class SoldateBehaviour : MonoBehaviour
 
     public float range = 5;
 
+    bool tooClose;
+
     
 
     Vector3 velocity;
@@ -20,32 +22,42 @@ public class SoldateBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       target = GameObject.FindGameObjectWithTag("Enemy").transform;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        target = GameObject.FindGameObjectWithTag("Enemy").transform;
+
+        direction = target.transform.position - transform.position;
+        transform.up = direction;
+
+        if (direction.magnitude < range)
+        {
+            tooClose = true;
+        }
+
+        else
+        {
+            tooClose = false;
+        }
+       
+
+        direction.Normalize();
+        velocity = direction * speed * Time.deltaTime;
+
 
         
-            direction = target.transform.position - transform.position;
 
+        transform.position += velocity;
 
-            transform.up = direction;
-
-            direction.Normalize();
-
-            if(direction.sqrMagnitude < range ) 
-            {
+        if( tooClose ) 
+        {
             velocity = Vector2.zero;
-            }
-
-            velocity = direction * speed * Time.deltaTime;
-
-            transform.position += velocity;
-        
-        
+        }
+ 
     }
 
     private void OnDrawGizmosSelected()
