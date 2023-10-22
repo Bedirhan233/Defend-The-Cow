@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     public GameObject bullet;
     public GameObject shotOutHole;
 
@@ -34,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
         rb2 = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
 
@@ -44,6 +44,11 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target = FindObjectOfType<SimpleMovePlayer>().transform;
+        Debug.Log(target.transform.position);
+
+           
+        transform.up = target.transform.position;
         MoveToThePlayer();
 
         ShootingAnimation();
@@ -60,11 +65,12 @@ public class EnemyBehaviour : MonoBehaviour
 
             // turn thhead to the player
 
-            transform.up = target.transform.position;
 
             //calculate distance to the player
 
             direction = target.position - transform.position;
+
+            
 
             direction.Normalize();
 

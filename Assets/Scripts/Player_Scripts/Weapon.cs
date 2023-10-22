@@ -87,7 +87,7 @@ public class Weapon : MonoBehaviour
         if ((Input.GetMouseButton(0) && timer > fireRate) && weaponIsReloaded)
         {
             currentAmmo--;
-            Debug.Log(currentAmmo);
+           
             Instantiate(bullet, OutHole.transform.position, transform.rotation);
             timer = 0;
         }
