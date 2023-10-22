@@ -7,6 +7,8 @@ public class EnemyNewOne : MonoBehaviour
 
     Transform target;
     Vector2 direction;
+
+    Vector2 newPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +18,19 @@ public class EnemyNewOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target = FindObjectOfType<MoveThePlayer>().transform;
+        newPos = new Vector2(0, 0);
 
         
-        target = FindObjectOfType<MoveThePlayer>().transform;
 
-        direction = target.position - transform.position;
-        direction.Normalize();
+        //direction = target.position - transform.position;
+        //direction.Normalize();
 
        // transform.up = target.position;
 
-        transform.LookAt(direction);   
+        transform.LookAt(newPos);   
+        
+        
         
         
     }

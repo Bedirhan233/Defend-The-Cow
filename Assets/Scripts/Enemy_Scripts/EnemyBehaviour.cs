@@ -28,6 +28,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     bool isIdle = false;
 
+    bool enemyIsWalkingToPlayer;
+
     public float startToIdle = 30;
 
     Vector2 direction;
@@ -38,17 +40,21 @@ public class EnemyBehaviour : MonoBehaviour
         rb2 = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
 
-        
+        target = FindAnyObjectByType<SimpleMovePlayer>().transform;
+
+        enemyIsWalkingToPlayer = true;
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        target = FindObjectOfType<SimpleMovePlayer>().transform;
-        Debug.Log(target.transform.position);
+        
 
-           
-        transform.up = target.transform.position;
+
+        
         MoveToThePlayer();
 
         ShootingAnimation();
@@ -58,43 +64,37 @@ public class EnemyBehaviour : MonoBehaviour
     void MoveToThePlayer()
     {
 
-        if (direction.sqrMagnitude < MoveRange)
+        direction = target.position - transform.position;
+        direction.Normalize();
+        transform.up = direction;
+
+        if (enemyIsWalkingToPlayer)
         {
-
+            isIdle = false;
             animator.SetBool("Walk", true);
-
-            // turn thhead to the player
-
-
-            //calculate distance to the player
-
-            direction = target.position - transform.position;
-
-            
-
-            direction.Normalize();
-
             rb2.velocity = speed * direction;
-
-            //if (direction.sqrMagnitude > startToIdle)
-            //{
-            //    direction.Normalize();
-
-            //    rb2.velocity = speed * direction;
-
-            //}
-
-            //if (direction.sqrMagnitude < startToIdle)
-            //{
-
-            //    isIdle = true;
-            //    if (isIdle)
-            //    {
-            //        rb2.velocity *= 0;
-            //        isIdle = false;
-            //    }
-            //}
         }
+
+        Debug.Log("Sqr magnitude " + direction.sqrMagnitude);
+        if (direction.sqrMagnitude < startToIdle)
+        {
+            isIdle = true;
+            enemyIsWalkingToPlayer = false;
+            animator.SetBool("Walk", false);
+
+            if (isIdle)
+            {
+
+                rb2.velocity *= 0;
+                isIdle = false;
+            }
+        }
+        else
+        {
+            isIdle = false;
+            enemyIsWalkingToPlayer = true;
+        }
+
     }
 
     private void ShootingAnimation()
