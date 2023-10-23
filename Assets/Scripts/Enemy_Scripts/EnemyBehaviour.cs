@@ -41,7 +41,6 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
 
 
-        target = FindAnyObjectByType<SimpleMovePlayer>().transform;
 
         enemyIsWalkingToPlayer = true;
 
@@ -53,14 +52,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        direction = target.position - transform.position;
-
-        
-
-
-        
-
+        target = FindAnyObjectByType<SimpleMovePlayer>().transform;
         MoveToThePlayer();
 
         ShootingAnimation();
@@ -71,51 +63,40 @@ public class EnemyBehaviour : MonoBehaviour
     {
 
         direction = target.position - transform.position;
-        direction.Normalize();
-        transform.up = direction;
-
-        if (enemyIsWalkingToPlayer)
-        {
-            isIdle = false;
-            animator.SetBool("Walk", true);
 
 
-            // turn thhead to the player
+        //if (enemyIsWalkingToPlayer)
+        //{
+        //    isIdle = false;
+        //    animator.SetBool("Walk", true);
 
-            Debug.Log("De kommer in!!");
+        //}
 
-            transform.up = target.transform.position;
-
-            //calculate distance to the player
-
-            direction = target.position - transform.position;
-
-            direction.Normalize();
-
-
-            rb2.velocity = speed * direction;
-        }
-
-        Debug.Log("Sqr magnitude " + direction.sqrMagnitude);
         if (direction.sqrMagnitude < startToIdle)
         {
-            isIdle = true;
-            enemyIsWalkingToPlayer = false;
-            animator.SetBool("Walk", false);
+            //isIdle = true;
+            //enemyIsWalkingToPlayer = false;
+            //animator.SetBool("Walk", false);
 
-            if (isIdle)
-            {
-
-                rb2.velocity *= 0;
-                isIdle = false;
-            }
+            
+                rb2.velocity = Vector2.zero;
+                isIdle = true;
+            
+        transform.up = direction;
         }
         else
         {
             isIdle = false;
-            enemyIsWalkingToPlayer = true;
+            //enemyIsWalkingToPlayer = true;
         }
 
+        if(!isIdle)
+        {
+            direction.Normalize();
+            transform.up = direction;
+            rb2.velocity = speed * direction;
+        }
+        
     }
 
     private void ShootingAnimation()
@@ -146,10 +127,9 @@ public class EnemyBehaviour : MonoBehaviour
 
         }
         
-            
-        
         timer += Time.deltaTime;
-        
+
+        Debug.Log("SHooting");
     }
 
     

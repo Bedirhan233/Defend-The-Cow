@@ -4,33 +4,32 @@ using UnityEngine;
 
 public class EnemyNewOne : MonoBehaviour
 {
-
+    public float speed = 10;
     Transform target;
     Vector2 direction;
+
+    Rigidbody2D rb2d;
 
     Vector2 newPos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
+        target = FindObjectOfType<MoveThePlayer>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        target = FindObjectOfType<MoveThePlayer>().transform;
-        newPos = new Vector2(0, 0);
-
         
+        direction =   target.position - transform.position;
 
-        //direction = target.position - transform.position;
-        //direction.Normalize();
+        direction.Normalize();
 
-       // transform.up = target.position;
 
-        transform.LookAt(newPos);   
+        rb2d.velocity = direction * speed;  
         
-        
+        Debug.Log(rb2d.velocity);
         
         
     }
