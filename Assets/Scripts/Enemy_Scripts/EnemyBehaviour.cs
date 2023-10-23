@@ -40,9 +40,11 @@ public class EnemyBehaviour : MonoBehaviour
         rb2 = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
 
+
         target = FindAnyObjectByType<SimpleMovePlayer>().transform;
 
         enemyIsWalkingToPlayer = true;
+
 
 
 
@@ -51,10 +53,14 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        direction = target.position - transform.position;
+
         
 
 
         
+
         MoveToThePlayer();
 
         ShootingAnimation();
@@ -72,6 +78,21 @@ public class EnemyBehaviour : MonoBehaviour
         {
             isIdle = false;
             animator.SetBool("Walk", true);
+
+
+            // turn thhead to the player
+
+            Debug.Log("De kommer in!!");
+
+            transform.up = target.transform.position;
+
+            //calculate distance to the player
+
+            direction = target.position - transform.position;
+
+            direction.Normalize();
+
+
             rb2.velocity = speed * direction;
         }
 
