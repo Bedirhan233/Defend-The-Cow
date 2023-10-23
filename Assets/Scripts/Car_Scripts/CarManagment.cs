@@ -31,7 +31,7 @@ public class CarManagment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(spawnEnemy);
+       
         //Instantiate(car, carBorn.transform.position, carBorn.transform.rotation);
 
         if(!hasReached)
