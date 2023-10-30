@@ -17,7 +17,7 @@ public class SoldateBehaviour : MonoBehaviour
 
     Vector2 direction;
 
-    public Transform target;
+    Transform target;
 
     public GameObject bullet;
     public GameObject shotOutHole;
@@ -35,7 +35,7 @@ public class SoldateBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        target = null;
     }
 
     // Update is called once per frame
@@ -62,18 +62,19 @@ public class SoldateBehaviour : MonoBehaviour
 
     private void FindAndMoveToEnemy()
     {
-        
-        target = GameObject.FindGameObjectWithTag("Enemy").transform;
 
-        if(target = null)
-        {
-        randomPosition = Random.insideUnitCircle * movingRange;
+       
 
-            transform.position = randomPosition;
-            Debug.Log(randomPosition);
-        }
-        else
-        {
+            target = GameObject.FindGameObjectWithTag("Enemy").transform;
+            bool find = target;
+
+        Debug.Log(target);
+            if(target == null)
+            {
+            Debug.Log("Inga fiender");
+            }
+          
+            
             direction = target.transform.position - transform.position;
 
             if (direction.sqrMagnitude < range)
@@ -98,7 +99,7 @@ public class SoldateBehaviour : MonoBehaviour
                 transform.position += velocity;
 
             }
-        }
+        
 
 
         
