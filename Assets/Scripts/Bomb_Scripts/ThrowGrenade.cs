@@ -26,7 +26,7 @@ public class ThrowGrenade : MonoBehaviour
         
         
       
-        if(Input.GetMouseButtonDown(1)) 
+        if(Input.GetKeyDown(KeyCode.Space))
         {
 
             Throw();

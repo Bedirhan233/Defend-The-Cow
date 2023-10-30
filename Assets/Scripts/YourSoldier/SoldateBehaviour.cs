@@ -10,7 +10,8 @@ public class SoldateBehaviour : MonoBehaviour
 
     bool tooClose;
 
-    
+    public bool inMoveRange;
+    public bool canShoot;
 
     Vector3 velocity;
 
@@ -18,7 +19,19 @@ public class SoldateBehaviour : MonoBehaviour
 
     public Transform target;
 
-   
+    public GameObject bullet;
+    public GameObject shotOutHole;
+
+    public float shootingRange = 10;
+    public float movingRange = 20;
+
+    float timer;
+    public float fireRate;
+
+    Vector2 randomPosition;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,36 +41,70 @@ public class SoldateBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FindAndMoveToEnemy();
 
+        if (canShoot)
+        {
+            if (fireRate < timer)
+            {
+                Instantiate(bullet, shotOutHole.transform.position, transform.rotation);
+                timer = 0;
+
+
+            }
+
+            timer += Time.deltaTime;
+
+        }
+
+
+    }
+
+    private void FindAndMoveToEnemy()
+    {
+        
         target = GameObject.FindGameObjectWithTag("Enemy").transform;
 
-        direction = target.transform.position - transform.position;
-        transform.up = direction;
-
-        if (direction.magnitude < range)
+        if(target = null)
         {
-            tooClose = true;
-        }
+        randomPosition = Random.insideUnitCircle * movingRange;
 
+            transform.position = randomPosition;
+            Debug.Log(randomPosition);
+        }
         else
         {
-            tooClose = false;
-        }
-       
+            direction = target.transform.position - transform.position;
 
-        direction.Normalize();
-        velocity = direction * speed * Time.deltaTime;
+            if (direction.sqrMagnitude < range)
+            {
+                tooClose = true;
+            }
+
+            else
+            {
+                tooClose = false;
+            }
+            if (tooClose)
+            {
+                velocity = Vector2.zero;
+            }
+            if (!tooClose && inMoveRange)
+            {
+
+                direction.Normalize();
+                transform.up = direction;
+                velocity = direction * speed * Time.deltaTime;
+                transform.position += velocity;
+
+            }
+        }
 
 
         
 
-        transform.position += velocity;
 
-        if( tooClose ) 
-        {
-            velocity = Vector2.zero;
-        }
- 
+        
     }
 
     private void OnDrawGizmosSelected()
