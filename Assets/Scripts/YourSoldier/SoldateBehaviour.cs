@@ -17,7 +17,7 @@ public class SoldateBehaviour : MonoBehaviour
 
     Vector2 direction;
 
-    Transform target;
+    GameObject target;
 
     public GameObject bullet;
     public GameObject shotOutHole;
@@ -63,18 +63,15 @@ public class SoldateBehaviour : MonoBehaviour
     private void FindAndMoveToEnemy()
     {
 
-       
+            target = GameObject.FindGameObjectWithTag("Enemy");
 
-            target = GameObject.FindGameObjectWithTag("Enemy").transform;
-            bool find = target;
-
-        Debug.Log(target);
+            Debug.Log(target);
             if(target == null)
             {
-            Debug.Log("Inga fiender");
+            target = GameObject.FindGameObjectWithTag("Idle");
             }
-          
             
+
             direction = target.transform.position - transform.position;
 
             if (direction.sqrMagnitude < range)
@@ -99,6 +96,10 @@ public class SoldateBehaviour : MonoBehaviour
                 transform.position += velocity;
 
             }
+        
+
+            
+            
         
 
 
