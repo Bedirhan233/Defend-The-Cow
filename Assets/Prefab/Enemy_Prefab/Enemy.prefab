@@ -292,7 +292,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300008, guid: 2164a1816f29acf45ad76327ffa671c7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0288954a1535499c256201113a470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4840937182946316935, guid: a45037d0a43747e499813314ee7f3fe4, type: 3}
+  bullet: {fileID: 3686479908042951536, guid: b1965f89ab66a01409acf751d6aa42e2, type: 3}
   shotOutHole: {fileID: 5217823582671521367}
   blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
   greenBar: {fileID: 3387801907922267916}

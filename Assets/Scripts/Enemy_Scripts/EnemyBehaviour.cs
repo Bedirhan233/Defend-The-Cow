@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    Transform target;
-    Transform soldierTarget;
+    GameObject target;
+    GameObject soldierTarget;
 
     Transform currentTarget;
     public GameObject bullet;
@@ -61,7 +61,6 @@ public class EnemyBehaviour : MonoBehaviour
         rb2 = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
         enemyRange = GetComponentInChildren<Enemy_Range>();
-        soldierTarget = GameObject.FindWithTag("Enemy").transform;
 
 
 
@@ -74,8 +73,8 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = FindAnyObjectByType<SimpleMovePlayer>().transform;
-        soldierTarget = FindAnyObjectByType<SoldateBehaviour>().transform;
+        target = GameObject.FindGameObjectWithTag("Player");
+        soldierTarget = GameObject.FindGameObjectWithTag("Soldier");
 
         MoveToThePlayer();
 
@@ -86,10 +85,10 @@ public class EnemyBehaviour : MonoBehaviour
     void MoveToThePlayer()
     {
         currentTarget = soldierTarget.transform;
-        
-        //if(currentTarget == null)
+
+        //if (currentTarget == null)
         //{
-        //    currentTarget = target;
+        //    currentTarget = target.transform;
         //}
         direction = currentTarget.position - transform.position;
 

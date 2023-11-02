@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static Unity.Collections.AllocatorManager;
 
 public class SoldateBehaviour : MonoBehaviour
 {
@@ -12,6 +14,14 @@ public class SoldateBehaviour : MonoBehaviour
 
     public bool inMoveRange;
     public bool canShoot;
+
+    public Image greenBar;
+    public Image redBar;
+
+    public float healthDamage = 5;
+    float transformToUi;
+    float redBarValue;
+
 
     Vector3 velocity;
 
@@ -27,6 +37,8 @@ public class SoldateBehaviour : MonoBehaviour
 
     float timer;
     public float fireRate;
+
+    public GameObject blood;
 
     Vector2 randomPosition;
 
@@ -96,22 +108,34 @@ public class SoldateBehaviour : MonoBehaviour
                 transform.position += velocity;
 
             }
-        
 
-            
-            
-        
-
-
-        
-
-
-        
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);   
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Soldat blir skjuten");
+            Instantiate(blood, transform.position, transform.rotation);
+            HealthToUi();
+        }
+    }
+
+
+    void HealthToUi()
+    {
+        transformToUi = healthDamage / 100;
+        redBarValue += transformToUi;
+        redBar.fillAmount = redBarValue;
+        if (redBarValue >= 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
