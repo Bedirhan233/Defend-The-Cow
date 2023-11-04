@@ -9,7 +9,10 @@ public class EnemyBehaviour : MonoBehaviour
     GameObject target;
     GameObject soldierTarget;
 
-    Transform currentTarget;
+    GameObject currentTarget;
+
+    Transform soldier;
+    Transform player;
     public GameObject bullet;
     public GameObject shotOutHole;
 
@@ -17,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     Enemy_Range enemyRange;
 
-    
+    public float health = 100;
 
     public Image greenBar;
     public Image redBar;
@@ -27,9 +30,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     Rigidbody2D rb2;
 
-    public float uiRedBar;
+    public float uiGreenBar;
 
-    float transformToUi;
+    
 
     public float speed = 2;
 
@@ -73,8 +76,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
-        soldierTarget = GameObject.FindGameObjectWithTag("Soldier");
+            Debug.Log(currentTarget);
 
         MoveToThePlayer();
 
@@ -84,13 +86,16 @@ public class EnemyBehaviour : MonoBehaviour
 
     void MoveToThePlayer()
     {
-        currentTarget = soldierTarget.transform;
+        currentTarget = GameObject.FindGameObjectWithTag("Soldier");
 
-        //if (currentTarget == null)
-        //{
-        //    currentTarget = target.transform;
-        //}
-        direction = currentTarget.position - transform.position;
+        if (currentTarget == null)
+        {
+            currentTarget = GameObject.FindGameObjectWithTag("Player");
+        }
+
+
+
+        direction = currentTarget.transform.position - transform.position;
 
         if (direction.sqrMagnitude < startToIdle)
         {
@@ -158,19 +163,25 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Bullet soldateBullet;
+        soldateBullet = other.gameObject.GetComponent<Bullet>();
         if(other.gameObject.tag == "Bullet")
         {
             Instantiate(blood, transform.position, transform.rotation);
-            HealthToUi();
+            health = health - soldateBullet.damage;
         }
+
+        HealthToUi();
+        Debug.Log(uiGreenBar);
     }
 
     private void HealthToUi()
     {
-        transformToUi = healthDamage / 100;
-        uiRedBar += transformToUi;
-        redBar.fillAmount = uiRedBar;
-        if (uiRedBar >= 1)
+        float healthDecimal;
+        healthDecimal = health / 100;
+        
+        greenBar.fillAmount = healthDecimal;
+        if (healthDecimal <= 0)
         {
             Destroy(gameObject);
         }

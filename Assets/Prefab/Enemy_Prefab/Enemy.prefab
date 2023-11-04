@@ -292,7 +292,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300008, guid: 2164a1816f29acf45ad76327ffa671c7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -338,15 +338,16 @@ MonoBehaviour:
   bullet: {fileID: 3686479908042951536, guid: b1965f89ab66a01409acf751d6aa42e2, type: 3}
   shotOutHole: {fileID: 5217823582671521367}
   blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
+  health: 100
   greenBar: {fileID: 3387801907922267916}
   redBar: {fileID: 9050296561184181374}
   animator: {fileID: 141848154274025743}
-  uiRedBar: 0
+  uiGreenBar: 0
   speed: 2
   shooting: 0
   MoveRange: 10
   fireRate: 0.1
-  shootingRange: 30
+  shootingRange: 50
   healthDamage: 15
   startToIdle: 50
   isInMoveRange: 0
@@ -479,8 +480,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 743671730354534136}
   - {fileID: 2000316022769213480}
+  - {fileID: 743671730354534136}
   m_Father: {fileID: 5982217176529491538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

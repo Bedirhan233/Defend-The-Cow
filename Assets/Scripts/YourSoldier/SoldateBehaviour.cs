@@ -6,7 +6,10 @@ using static Unity.Collections.AllocatorManager;
 
 public class SoldateBehaviour : MonoBehaviour
 {
-    public float speed = 5;
+    public float Movespeed = 5;
+
+    public float bulletSpeed = 10;
+    public float bulletDamage = 10;
 
     public float range = 5;
 
@@ -19,7 +22,7 @@ public class SoldateBehaviour : MonoBehaviour
     public Image redBar;
 
     public float healthDamage = 5;
-    float transformToUi;
+    float damageDivided;
     float redBarValue;
 
 
@@ -31,6 +34,8 @@ public class SoldateBehaviour : MonoBehaviour
 
     public GameObject bullet;
     public GameObject shotOutHole;
+
+    public Bullet bulletScript;
 
     public float shootingRange = 10;
     public float movingRange = 20;
@@ -47,6 +52,9 @@ public class SoldateBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bulletScript.speed = bulletSpeed;
+        bulletScript.damage = bulletDamage;
+
         target = null;
     }
 
@@ -77,7 +85,6 @@ public class SoldateBehaviour : MonoBehaviour
 
             target = GameObject.FindGameObjectWithTag("Enemy");
 
-            Debug.Log(target);
             if(target == null)
             {
             target = GameObject.FindGameObjectWithTag("Idle");
@@ -104,7 +111,7 @@ public class SoldateBehaviour : MonoBehaviour
 
                 direction.Normalize();
                 transform.up = direction;
-                velocity = direction * speed * Time.deltaTime;
+                velocity = direction * Movespeed * Time.deltaTime;
                 transform.position += velocity;
 
             }
@@ -123,15 +130,15 @@ public class SoldateBehaviour : MonoBehaviour
         {
             Debug.Log("Soldat blir skjuten");
             Instantiate(blood, transform.position, transform.rotation);
-            HealthToUi();
+            //HealthToUi();
         }
     }
 
 
-    void HealthToUi()
+    void HealthToUi(int damage)
     {
-        transformToUi = healthDamage / 100;
-        redBarValue += transformToUi;
+        damageDivided = damage / 100;
+        redBarValue += damageDivided;
         redBar.fillAmount = redBarValue;
         if (redBarValue >= 1)
         {

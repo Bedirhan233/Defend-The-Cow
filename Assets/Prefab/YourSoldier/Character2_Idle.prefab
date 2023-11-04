@@ -524,8 +524,12 @@ MonoBehaviour:
   range: 20
   inMoveRange: 0
   canShoot: 0
+  greenBar: {fileID: 2493740839918214369}
+  redBar: {fileID: 4902673123312807592}
+  healthDamage: 15
   bullet: {fileID: 4840937182946316935, guid: 1c070a36b52edc24ebaad3cccfde31dc, type: 3}
   shotOutHole: {fileID: 5869481695571004877}
+  bulletScript: {fileID: -6031830054193976394, guid: 1c070a36b52edc24ebaad3cccfde31dc, type: 3}
   shootingRange: 20
   movingRange: 30
   fireRate: 0.2

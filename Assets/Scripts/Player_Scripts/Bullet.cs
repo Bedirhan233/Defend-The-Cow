@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10;
+    public float damage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,10 @@ public class Bullet : MonoBehaviour
         }
 
         if (other.gameObject.tag == "Soldier")
+        {
+            Destroy(gameObject);
+        }
+        if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
