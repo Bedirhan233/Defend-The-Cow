@@ -31,8 +31,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6019985727318281587}
   - {fileID: 691664711493230117}
+  - {fileID: 6019985727318281587}
   m_Father: {fileID: 6395349581725838116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -520,20 +520,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a052fecd896976f4cb9b2383cb1665c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  range: 20
-  inMoveRange: 0
-  canShoot: 0
   greenBar: {fileID: 2493740839918214369}
   redBar: {fileID: 4902673123312807592}
-  healthDamage: 15
   bullet: {fileID: 4840937182946316935, guid: 1c070a36b52edc24ebaad3cccfde31dc, type: 3}
   shotOutHole: {fileID: 5869481695571004877}
   bulletScript: {fileID: -6031830054193976394, guid: 1c070a36b52edc24ebaad3cccfde31dc, type: 3}
+  blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
+  canShoot: 0
+  inMoveRange: 0
+  range: 20
   shootingRange: 20
   movingRange: 30
+  Movespeed: 5
+  health: 100
+  bulletSpeed: 20
+  bulletDamage: 10
   fireRate: 0.2
-  blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
 --- !u!95 &6073704298610403092
 Animator:
   serializedVersion: 5

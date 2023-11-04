@@ -6,82 +6,68 @@ using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    GameObject target;
-    GameObject soldierTarget;
-
-    GameObject currentTarget;
-
-    Transform soldier;
-    Transform player;
-    public GameObject bullet;
-    public GameObject shotOutHole;
-
-    public GameObject blood;
-
-    Enemy_Range enemyRange;
-
-    public float health = 100;
-
-    public Image greenBar;
-    public Image redBar;
-
-
-    public Animator animator;
 
     Rigidbody2D rb2;
-
-    public float uiGreenBar;
-
-    
-
-    public float speed = 2;
-
-    public bool shooting;
-    public float MoveRange = 5;
-    public float fireRate = 5;
-    float timer;
-
-    public float shootingRange = 30f;
-
-    bool isIdle = false;
-
-    public float healthDamage = 15;
-
-
-    public float startToIdle = 30;
-
-    public bool isInMoveRange;
-
-    public float fill = 1;
-
-    public bool isWalkingAnimation;
+    Enemy_Range enemyRange;
+    GameObject currentTarget;
 
     Vector2 direction;
+    
+    float timer;
+    
+    bool isIdle = false;
+
+
+    [Header("UI")]
+    public Image greenBar;
+    public Image redBar;
+    public float uiGreenBar;
+    public float fill = 1;
+
+    [Header("Animation")]
+    public Animator animator;
+    public bool isWalkingAnimation;
+
+    [Header("GameObjects")]
+    public GameObject bullet;
+    public GameObject shotOutHole;
+    public GameObject blood;
+    public Bullet bulletScript;
+
+    [Header("Range")]
+    public float MoveRange = 5;
+    public float shootingRange = 30f;
+    public bool isInMoveRange;
+
+    [Header("Character Move")]
+    public float startToIdle = 30;
+    public float moveSpeed = 2;
+
+    [Header("Shooting")]
+    public float fireRate = 5;
+    public float shootingDamage = 10;
+    public float shootingSpeed = 5;
+    public bool shooting;
+
+    [Header("Health")]
+    public float health = 100;
+    public float healthDamage = 15;
+
     // Start is called before the first frame update
     void Start()
     {
-        
         rb2 = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
         enemyRange = GetComponentInChildren<Enemy_Range>();
-
-
-
-       
-
-
-
+        bulletScript.damage = shootingDamage;
+        bulletScript.speed = shootingSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-            Debug.Log(currentTarget);
-
         MoveToThePlayer();
-
         ShootingAnimation();
-
     }
 
     void MoveToThePlayer()
@@ -93,8 +79,6 @@ public class EnemyBehaviour : MonoBehaviour
             currentTarget = GameObject.FindGameObjectWithTag("Player");
         }
 
-
-
         direction = currentTarget.transform.position - transform.position;
 
         if (direction.sqrMagnitude < startToIdle)
@@ -103,7 +87,7 @@ public class EnemyBehaviour : MonoBehaviour
                 isIdle = true;
             
                 transform.up = direction;
-            isWalkingAnimation = false;
+                isWalkingAnimation = false;
 
         }
         else
@@ -116,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             direction.Normalize();
             transform.up = direction;
-            rb2.velocity = speed * direction;
+            rb2.velocity = moveSpeed * direction;
         }
         
     }
@@ -127,13 +111,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             animator.SetBool("ShootingAnimation", true);
             Shoot();
-
         }
         if (!shooting)
         {
             animator.SetBool("ShootingAnimation", false);
-           
-
         }
     }
 
@@ -144,12 +125,9 @@ public class EnemyBehaviour : MonoBehaviour
         {
         Instantiate(bullet, shotOutHole.transform.position, transform.rotation);
         timer = 0;
-           
-
         }
-        
-        timer += Time.deltaTime;
 
+        timer += Time.deltaTime;
     }
 
 
@@ -157,8 +135,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, MoveRange);
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -186,9 +162,4 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-
-
-
 }

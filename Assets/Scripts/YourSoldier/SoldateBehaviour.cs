@@ -6,47 +6,41 @@ using static Unity.Collections.AllocatorManager;
 
 public class SoldateBehaviour : MonoBehaviour
 {
-    public float Movespeed = 5;
-
-    public float bulletSpeed = 10;
-    public float bulletDamage = 10;
-
-    public float range = 5;
-
-    bool tooClose;
-
-    public bool inMoveRange;
-    public bool canShoot;
-
-    public Image greenBar;
-    public Image redBar;
-
-    public float healthDamage = 5;
-    float damageDivided;
-    float redBarValue;
-
-
     Vector3 velocity;
-
     Vector2 direction;
 
     GameObject target;
 
+    bool tooClose;
+    float timer;
+
+    [Header ("UI")]
+    public Image greenBar;
+    public Image redBar;
+
+
+    [Header("GameObject")]
     public GameObject bullet;
     public GameObject shotOutHole;
-
     public Bullet bulletScript;
-
-    public float shootingRange = 10;
-    public float movingRange = 20;
-
-    float timer;
-    public float fireRate;
-
     public GameObject blood;
 
-    Vector2 randomPosition;
+    [Header("Move settings and range")]
+    public bool canShoot;
+    public bool inMoveRange;
+    public float range = 5;
+    public float shootingRange = 10;
+    public float movingRange = 20;
+    public float Movespeed = 5;
 
+    [Header("Health")]
+    public float health = 100;
+
+
+    [Header("Bullet")]
+    public float bulletSpeed = 10;
+    public float bulletDamage = 10;
+    public float fireRate;
 
 
     // Start is called before the first frame update
@@ -124,23 +118,27 @@ public class SoldateBehaviour : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);   
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(collision.gameObject.tag == "Bullet")
+        Bullet soldateBullet;
+        soldateBullet = other.gameObject.GetComponent<Bullet>();
+        if (other.gameObject.tag == "Bullet")
         {
             Debug.Log("Soldat blir skjuten");
             Instantiate(blood, transform.position, transform.rotation);
-            //HealthToUi();
+            health = health - soldateBullet.damage;
+            HealthToUi();
         }
     }
 
 
-    void HealthToUi(int damage)
+    void HealthToUi()
     {
-        damageDivided = damage / 100;
-        redBarValue += damageDivided;
-        redBar.fillAmount = redBarValue;
-        if (redBarValue >= 1)
+        float healthDecimal;
+        healthDecimal = health / 100;
+
+        greenBar.fillAmount = healthDecimal;
+        if (healthDecimal <= 0)
         {
             Destroy(gameObject);
         }

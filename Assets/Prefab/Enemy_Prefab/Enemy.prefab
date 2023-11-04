@@ -203,7 +203,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -335,24 +335,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0288954a1535499c256201113a470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenBar: {fileID: 3387801907922267916}
+  redBar: {fileID: 9050296561184181374}
+  uiGreenBar: 0
+  fill: 1
+  animator: {fileID: 141848154274025743}
+  isWalkingAnimation: 0
   bullet: {fileID: 3686479908042951536, guid: b1965f89ab66a01409acf751d6aa42e2, type: 3}
   shotOutHole: {fileID: 5217823582671521367}
   blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
-  health: 100
-  greenBar: {fileID: 3387801907922267916}
-  redBar: {fileID: 9050296561184181374}
-  animator: {fileID: 141848154274025743}
-  uiGreenBar: 0
-  speed: 2
-  shooting: 0
+  bulletScript: {fileID: -6031830054193976394, guid: a45037d0a43747e499813314ee7f3fe4, type: 3}
   MoveRange: 10
-  fireRate: 0.1
   shootingRange: 50
-  healthDamage: 15
-  startToIdle: 50
   isInMoveRange: 0
-  fill: 1
-  isWalkingAnimation: 0
+  startToIdle: 50
+  moveSpeed: 2
+  fireRate: 0.1
+  shootingDamage: 10
+  shootingSpeed: 5
+  shooting: 0
+  health: 100
+  healthDamage: 15
 --- !u!50 &6927723446273906407
 Rigidbody2D:
   serializedVersion: 4
