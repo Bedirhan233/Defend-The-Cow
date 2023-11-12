@@ -31,6 +31,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1913571513268320160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6567594522738725999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4937173777430598308}
+  - component: {fileID: 1370546315504304511}
+  - component: {fileID: 3266176383852328929}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4937173777430598308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567594522738725999}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.04763265, y: 0.018404838, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5402251619784074279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1370546315504304511
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567594522738725999}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 15.9
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 0
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &3266176383852328929
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567594522738725999}
+  m_Enabled: 1
 --- !u!1 &8071454501930554711
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +339,7 @@ GameObject:
   - component: {fileID: 515261810676245368}
   - component: {fileID: 4068205968396551057}
   - component: {fileID: 1183520457449238915}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Princess
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -262,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8865623219893799040}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04763265, y: -0.018404838, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -270,6 +362,7 @@ Transform:
   - {fileID: 1913571513268320160}
   - {fileID: 1281823801085509415}
   - {fileID: 7992899967716696429}
+  - {fileID: 4937173777430598308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7139006584009335232
@@ -351,6 +444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccff84b261100ee42a19178a51eda18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 2293387036058523467, guid: d8ea2bc4f54bf9a42b93a6cfbd1bf9ed, type: 3}
+  player: {fileID: 8865623219893799040}
   speed: 20
 --- !u!58 &515261810676245368
 CircleCollider2D:
@@ -426,9 +521,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649cdc5146a1b8547aec2952efb929b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greande: {fileID: 7264712727678566556, guid: b2b90a247ac64fe4f88e7f490f99b072, type: 3}
+  grenade: {fileID: 7264712727678566556, guid: b2b90a247ac64fe4f88e7f490f99b072, type: 3}
   grenadeOut: {fileID: 2140339995869110953}
-  speed: 5
+  speed: 0.5
   throwForce: 5
 --- !u!1001 &7888488861084165198
 PrefabInstance:

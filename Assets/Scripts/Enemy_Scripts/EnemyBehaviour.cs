@@ -33,6 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject shotOutHole;
     public GameObject blood;
     public Bullet bulletScript;
+    public GameObject coinPreFab;
 
     [Header("Range")]
     public float MoveRange = 5;
@@ -161,5 +162,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(coinPreFab, transform.position, transform.rotation);
     }
 }

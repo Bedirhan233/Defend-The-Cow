@@ -8,6 +8,8 @@ public class SimpleMovePlayer : MonoBehaviour
     Vector2 input;
     Vector3 velocity;
     Vector3 position;
+
+   
     Rigidbody2D rb2;
 
  
@@ -41,5 +43,14 @@ public class SimpleMovePlayer : MonoBehaviour
     private void FixedUpdate()
     {
         rb2.MovePosition(rb2.position + input * speed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Coin")
+        {
+            // add coins to the system
+            GameManager.totalEnemyPlayerHave++;
+        }
     }
 }

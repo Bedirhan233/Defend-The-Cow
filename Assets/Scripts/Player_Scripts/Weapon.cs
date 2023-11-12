@@ -20,8 +20,9 @@ public class Weapon : MonoBehaviour
     public GameObject player;
     bool Weaponflip = false;
 
-    public int totalAmmo = 20;
+    public static int totalAmmo = 20;
     int currentAmmo;
+    public static int newAmmo;
 
     bool weaponIsReloaded;
 
@@ -32,12 +33,15 @@ public class Weapon : MonoBehaviour
     {
         WeaponspriteRenderer = weapon.GetComponent<SpriteRenderer>();
         currentAmmo = totalAmmo;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        currentAmmo += newAmmo;
+        // fix this
+
         if (currentAmmo > 0)
         {
             weaponIsReloaded = true;

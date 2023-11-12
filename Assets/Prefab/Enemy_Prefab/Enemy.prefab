@@ -345,6 +345,7 @@ MonoBehaviour:
   shotOutHole: {fileID: 5217823582671521367}
   blood: {fileID: 6854366630006397969, guid: 5f4cbf3af2158e045937746bbfaedfee, type: 3}
   bulletScript: {fileID: -6031830054193976394, guid: a45037d0a43747e499813314ee7f3fe4, type: 3}
+  coinPreFab: {fileID: 8053606371247140749, guid: 712d21173a4acec479c50b668f2a2dc1, type: 3}
   MoveRange: 10
   shootingRange: 50
   isInMoveRange: 0

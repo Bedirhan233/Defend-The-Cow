@@ -530,7 +530,7 @@ MonoBehaviour:
   inMoveRange: 0
   range: 20
   shootingRange: 20
-  movingRange: 30
+  movingRange: 50
   Movespeed: 5
   health: 100
   bulletSpeed: 20
