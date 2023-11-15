@@ -124,7 +124,6 @@ public class SoldateBehaviour : MonoBehaviour
         soldateBullet = other.gameObject.GetComponent<Bullet>();
         if (other.gameObject.tag == "Bullet")
         {
-            Debug.Log("Soldat blir skjuten");
             Instantiate(blood, transform.position, transform.rotation);
             health = health - soldateBullet.damage;
             HealthToUi();

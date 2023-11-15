@@ -9,6 +9,8 @@ public class SpawnEnemy : MonoBehaviour
 
     public GameObject soldier;
 
+    public GameManager manager;
+
     Vector2 mousePos;
 
     public int MaxEnemySpawnFromCar = 2;
@@ -24,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetMouseButtonDown(1)) 
+        if(Input.GetMouseButtonDown(1) && manager.enoughMoneyForSoldier) 
         {
         Instantiate(soldier, mousePos, transform.rotation); 
         

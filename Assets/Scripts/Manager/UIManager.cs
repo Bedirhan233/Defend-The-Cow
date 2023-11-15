@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI coins;
     public TextMeshProUGUI ammoUi;
 
+    public Weapon weapon;
+    public GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coins.text = "Coins " + GameManager.totalEnemyPlayerHave;
-        ammoUi.text = "total ammo " + Weapon.newAmmo;
+        coins.text = "Coins " + gameManager.currentMoney;
+        ammoUi.text = "total ammo " + weapon.currentAmmo;
     }
 }

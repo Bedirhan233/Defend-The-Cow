@@ -9,6 +9,7 @@ public class SimpleMovePlayer : MonoBehaviour
     Vector3 velocity;
     Vector3 position;
 
+    GameManager gameManager;
    
     Rigidbody2D rb2;
 
@@ -22,8 +23,10 @@ public class SimpleMovePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb2 = GetComponent<Rigidbody2D>();  
-    
+        rb2 = GetComponent<Rigidbody2D>();
+        gameManager = FindAnyObjectByType<GameManager>();
+
+
     }
 
     // Update is called once per frame
@@ -50,7 +53,8 @@ public class SimpleMovePlayer : MonoBehaviour
         if(collision.gameObject.tag == "Coin")
         {
             // add coins to the system
-            GameManager.totalEnemyPlayerHave++;
+            gameManager.GetCoinsFromEnemy();
+            Destroy(collision.gameObject);
         }
     }
 }

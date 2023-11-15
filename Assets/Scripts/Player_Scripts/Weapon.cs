@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Weapon : MonoBehaviour
 {
@@ -21,8 +22,8 @@ public class Weapon : MonoBehaviour
     bool Weaponflip = false;
 
     public static int totalAmmo = 20;
-    int currentAmmo;
-    public static int newAmmo;
+    public int currentAmmo;
+    
 
     bool weaponIsReloaded;
 
@@ -39,8 +40,6 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAmmo += newAmmo;
-        // fix this
 
         if (currentAmmo > 0)
         {
@@ -90,6 +89,10 @@ public class Weapon : MonoBehaviour
 
         if ((Input.GetMouseButton(0) && timer > fireRate) && weaponIsReloaded)
         {
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             currentAmmo--;
            
             Instantiate(bullet, OutHole.transform.position, transform.rotation);

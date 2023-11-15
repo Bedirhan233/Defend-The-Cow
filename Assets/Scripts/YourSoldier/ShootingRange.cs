@@ -22,7 +22,6 @@ public class ShootingRange : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("Can shoot");
             soldier.canShoot = true;
         }
     }

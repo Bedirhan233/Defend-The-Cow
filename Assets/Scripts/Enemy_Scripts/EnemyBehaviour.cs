@@ -149,7 +149,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         HealthToUi();
-        Debug.Log(uiGreenBar);
     }
 
     private void HealthToUi()
