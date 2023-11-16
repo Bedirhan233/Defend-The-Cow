@@ -7,12 +7,16 @@ public class GameManager : MonoBehaviour
     public int newAmmo = 1;
     public int ammoCost = 2;
 
-    public int soldierCost;
+    public int soldierCost = 5;
     public Weapon weapon;
     public int currentMoney;
-    public int moneyFromEnemy = 2;
+    public int moneyFromEnemy = 10;
 
-    GameObject[] soldier;
+    public GameObject soldierUi;
+    public GameObject soldierPrefab;
+    Vector2 cursorPos;
+
+    public GameObject[] soldier;
 
     public bool enoughMoneyForSoldier = false;
     // Start is called before the first frame update
@@ -24,7 +28,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ClickToInstantiate();
+
         soldier = GameObject.FindGameObjectsWithTag("Soldier");
+
+    }
+
+    private void ClickToInstantiate()
+    {
+        if (enoughMoneyForSoldier)
+        {
+            cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            soldier = GameObject.FindGameObjectsWithTag("Soldier");
+            soldierUi.transform.position = new Vector2(cursorPos.x, cursorPos.y);
+            if (Input.GetMouseButtonDown(1))
+            {
+                Instantiate(soldierPrefab, cursorPos, transform.rotation);
+                enoughMoneyForSoldier = false;
+            }
+
+        }
     }
 
     public void BuyNewAmmo()
@@ -50,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (soldierCost <= currentMoney)
         {
             enoughMoneyForSoldier = true;
-
+            currentMoney -= soldierCost;
         }
 
     }

@@ -26,11 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetMouseButtonDown(1) && manager.enoughMoneyForSoldier) 
-        {
-        Instantiate(soldier, mousePos, transform.rotation); 
-        
-        }
+       
 
         
     }
